@@ -3,7 +3,7 @@
 </h1>
  
 ## Citation
-If you find DoRA useful, please consider giving a star and citation:
+If you find EigenLoRAx useful, please consider giving a star and citation:
 ```bibtex
 @misc{kaushik2025eigenloraxrecyclingadaptersprincipal,
       title={EigenLoRAx: Recycling Adapters to Find Principal Subspaces for Resource-Efficient Adaptation and Inference}, 
