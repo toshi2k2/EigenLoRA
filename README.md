@@ -8,6 +8,10 @@
 
 The Official PyTorch implementation of [**EigenLoRAx: Recycling Adapters to Find Principal Subspaces for Resource-Efficient Adaptation and Inference**](https://arxiv.org/abs/2502.04700)
 
+## Usage
+
+In order to find the EigenLoRAs Principal Components, start with a few pretrained LoRA adapters for the same base model. 
+
 ## Citation
 If you find EigenLoRAx useful, please consider giving a star and citation:
 ```bibtex
