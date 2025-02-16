@@ -2,6 +2,12 @@
     <p> EigenLoRAx: Recycling Adapters to Find Principal Subspaces for Resource-Efficient Adaptation and Inference</p>
 </h1>
  
+<h1 align="center"> 
+    <image src="./imgs/elorax.png"/>
+</h1>
+
+The Official PyTorch implementation of [**EigenLoRAx: Recycling Adapters to Find Principal Subspaces for Resource-Efficient Adaptation and Inference**](https://arxiv.org/abs/2502.04700)
+
 ## Citation
 If you find EigenLoRAx useful, please consider giving a star and citation:
 ```bibtex
