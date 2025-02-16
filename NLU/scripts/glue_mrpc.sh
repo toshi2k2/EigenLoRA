@@ -1,0 +1,26 @@
+python run_glue.py \
+  --model_name_or_path roberta-base \
+  --task_name mrpc \
+  --do_train \
+  --do_eval \
+  --max_seq_length 512 \
+  --per_device_train_batch_size 16 \
+  --seed 0 \
+  --learning_rate 4e-3 \
+  --lr_scheduler_type 'reduce_lr_on_plateau' \
+  --weight_decay 0.1 \
+  --warmup_ratio 0.06 \
+  --num_train_epochs 30 \
+  --evaluation_strategy epoch \
+  --apply_eigenlora True\
+  --eigenlora_r 8 \
+  --eigenlora_num_components 64 \
+  --eigenlora_adapter_name mrpc \
+  --eigenlora_load_path ./mrpc_eigenlora \
+  --eigenlora_save_path ./mrpc_eigenlora_trained \
+  --output_dir ./mrpc \
+  --overwrite_output_dir \
+  --logging_dir ./mrpc \
+  --logging_steps 10 \
+  --report_to wandb \
+  --run_name roberta_mrpc

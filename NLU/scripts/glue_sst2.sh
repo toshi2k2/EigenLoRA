@@ -1,0 +1,26 @@
+python NLU/run_glue.py \
+  --model_name_or_path roberta-base \
+  --task_name sst2 \
+  --do_train \
+  --do_eval \
+  --max_seq_length 512 \
+  --per_device_train_batch_size 16 \
+  --seed 0 \
+  --learning_rate 5e-3 \
+  --lr_scheduler_type 'reduce_lr_on_plateau' \
+  --weight_decay 0.1 \
+  --warmup_ratio 0.06 \
+  --num_train_epochs 60 \
+  --evaluation_strategy epoch \
+  --apply_eigenlora True\
+  --eigenlora_r 8 \
+  --eigenlora_num_components 64 \
+  --eigenlora_adapter_name sst2 \
+  --eigenlora_load_path ./sst2_eigenlora \
+  --eigenlora_save_path ./sst2_eigenlora_trained \
+  --output_dir ./sst2 \
+  --overwrite_output_dir \
+  --logging_dir ./sst2 \
+  --logging_steps 10 \
+  --report_to wandb \
+  --run_name roberta_sst2
