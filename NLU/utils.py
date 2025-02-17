@@ -108,7 +108,7 @@ def add_gs_vectors(state_dict, num_rand_vecs):
     to_return = {}
     for k in state_dict.keys():
         if "components" in k:
-            mat = state_dict[k]
+            mat = state_dict[k].cpu()
             for i in range(num_rand_vecs):
                 rand_vec = torch.rand(max(mat.shape))
                 new_vector = gram_schmidt_normalization(mat, rand_vec).unsqueeze(1)
