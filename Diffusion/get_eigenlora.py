@@ -6,7 +6,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from diffusers import StableDiffusionXLPipeline
 import torch
-
+from safetensors.torch import save_file
 from utils import (
     consolidate_loras_sdxl,
     get_eigenvectors,
@@ -70,3 +70,11 @@ lora_dict_train = consolidate_loras_sdxl(
 )
 
 eig_dict = get_eigenvectors(lora_dict_train, False)
+recons_lora = calculate_reconstructed_loras(pipe, "CiroN2022/toy-face", eig_dict, 32)
+os.mkdir("toy_face_recons")
+save_file(recons_lora, "toy_face_recons/weights_sdxl.safetensors")
+
+
+recons_lora = calculate_reconstructed_loras(pipe, "CiroN2022/alchemy", eig_dict, 32)
+os.mkdir("alchemy_recons")
+save_file(recons_lora, "alchemy_recons/weights_sdxl.safetensors")

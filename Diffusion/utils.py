@@ -55,17 +55,21 @@ def calculate_reconstructed_loras(pipe, lora_name, eigenvectors, num_components)
     recons_lora_sd = {}
     lora_sd, alphas = pipe.lora_state_dict(lora_name, unet_config=pipe.unet.config)
     for k in lora_sd.keys():
-        if "up" in k:
+        if ".up." in k:
             components = nn.Parameter(
                 eigenvectors[k]["eigenvectors"][:, :num_components]
             ).contiguous()
             loadings = nn.Parameter(torch.mm(components.t(), lora_sd[k]).squeeze(dim=1))
-            recons = torch.sum(
-                components.unsqueeze(0) * loadings.t().unsqueeze(1),
-                dim=-1,
-            ).t()
+            recons = (
+                torch.sum(
+                    components.unsqueeze(0) * loadings.t().unsqueeze(1),
+                    dim=-1,
+                )
+                .t()
+                .contiguous()
+            )
             recons_lora_sd.update({k: recons})
-        elif "down" in k:
+        elif ".down." in k:
             components = nn.Parameter(
                 eigenvectors[k]["eigenvectors"][:, :num_components]
             ).contiguous()
@@ -75,6 +79,6 @@ def calculate_reconstructed_loras(pipe, lora_name, eigenvectors, num_components)
             recons = torch.sum(
                 components.unsqueeze(0) * loadings.t().unsqueeze(1),
                 dim=-1,
-            )
+            ).contiguous()
             recons_lora_sd.update({k: recons})
     return recons_lora_sd
