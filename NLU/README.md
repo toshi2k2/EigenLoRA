@@ -8,7 +8,7 @@ Our experiments on the GLUE benchmark are run on 4 NVIDIA A5000 GPU cards. The r
     <image src="../imgs/glue.png"/>
 </h1>
 
-## Steps to reproduce our results
+## Steps to reproduce GLUE results in low-resource settings
 ### NLU
 ```console
 cd NLU/
