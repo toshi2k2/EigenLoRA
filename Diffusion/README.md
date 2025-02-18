@@ -1,0 +1,25 @@
+# SDXL inference using EigenLoRA
+
+## Adapting to the GLUE Benchmark
+Our experiments are run on 1 NVIDIA A5000 GPU card. The results may vary due to different GPU models, drivers, CUDA SDK versions, floating-point precisions, and random seeds. 
+
+
+<h1 align="center"> 
+    <image src="../imgs/diffusion.png"/>
+</h1>
+
+## Steps to reproduce our results
+### Diffusion
+```console
+cd Diffusion/
+```
+
+### Obtain the initial reconstructed LoRAs from EigenLoRAs
+```console
+python get_eigenlora.py
+```
+
+### Start the experiments for the obtained eigenloras
+```console
+python sdxl_inference.py
+```

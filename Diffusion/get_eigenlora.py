@@ -75,6 +75,6 @@ os.mkdir("toy_face_recons")
 save_file(recons_lora, "toy_face_recons/weights_sdxl.safetensors")
 
 
-recons_lora = calculate_reconstructed_loras(pipe, "CiroN2022/alchemy", eig_dict, 32)
-os.mkdir("alchemy_recons")
-save_file(recons_lora, "alchemy_recons/weights_sdxl.safetensors")
+recons_lora = calculate_reconstructed_loras(pipe, "CiroN2022/mind-warp", eig_dict, 32)
+os.mkdir("mind_warp_recons")
+save_file(recons_lora, "mind_warp/weights_sdxl.safetensors")
