@@ -1,6 +1,6 @@
 # SDXL inference using EigenLoRA
 
-## Adapting to the GLUE Benchmark
+## Adapting for SDXL
 Our experiments are run on 1 NVIDIA A5000 GPU card. The results may vary due to different GPU models, drivers, CUDA SDK versions, floating-point precisions, and random seeds. 
 
 
