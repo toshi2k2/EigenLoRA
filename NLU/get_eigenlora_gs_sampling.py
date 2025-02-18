@@ -49,13 +49,13 @@ model = AutoModelForSequenceClassification.from_pretrained(
 )
 model = get_peft_model(model, eigenlora_config)
 model.save_pretrained(
-    "./EigenLoRA/NLU/mrpc_eigenlora",
+    "./mrpc_eigenlora",
     save_eigenlora_components=True,
     save_eigenlora_loadings=True,
 )
 save_file(
     mrpc_eigenlora,
-    "./EigenLoRA/NLU/mrpc_eigenlora/adapter_model.safetensors",
+    "./mrpc_eigenlora/adapter_model.safetensors",
 )
 
 
@@ -69,11 +69,11 @@ model = AutoModelForSequenceClassification.from_pretrained(
 )
 model = get_peft_model(model, eigenlora_config)
 model.save_pretrained(
-    "./EigenLoRA/NLU/stsb_eigenlora",
+    "./stsb_eigenlora",
     save_eigenlora_components=True,
     save_eigenlora_loadings=True,
 )
 save_file(
     stsb_eigenlora,
-    "./EigenLoRA/NLU/stsb_eigenlora/adapter_model.safetensors",
+    "./stsb_eigenlora/adapter_model.safetensors",
 )

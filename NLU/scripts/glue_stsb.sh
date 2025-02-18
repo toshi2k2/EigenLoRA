@@ -1,4 +1,4 @@
-python NLU/run_glue.py \
+python run_glue.py \
   --model_name_or_path roberta-base \
   --task_name stsb \
   --do_train \
