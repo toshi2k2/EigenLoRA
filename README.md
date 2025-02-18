@@ -8,6 +8,8 @@
 
 The Official PyTorch implementation of [**EigenLoRAx: Recycling Adapters to Find Principal Subspaces for Resource-Efficient Adaptation and Inference**](https://arxiv.org/abs/2502.04700)
 
+We are still updating the code and its instructions in the coming weeks. Please watch (and leave a star if you like our work) this space for continued update.
+
 ### Setup
 ```console
 conda env create -f environment.yml
