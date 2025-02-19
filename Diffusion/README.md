@@ -14,12 +14,12 @@ Our experiments are run on 1 NVIDIA A5000 GPU card. The results may vary due to 
 cd Diffusion/
 ```
 
-### Obtain the initial reconstructed LoRAs from EigenLoRAs
+### Obtain the initial reconstructed LoRAs and EigenLoRAs
 ```console
 python get_eigenlora.py
 ```
 
-### Start the experiments for the obtained eigenloras
+### Generate using the obtained reconstructed LoRAs and EigenLoRAs
 ```console
 python sdxl_inference.py
 ```
