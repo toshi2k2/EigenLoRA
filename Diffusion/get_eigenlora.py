@@ -11,6 +11,7 @@ from utils import (
     consolidate_loras_sdxl,
     get_eigenvectors,
     calculate_reconstructed_loras,
+    calculate_eigenloras,
 )
 
 pipe = StableDiffusionXLPipeline.from_pretrained(
@@ -74,7 +75,14 @@ recons_lora = calculate_reconstructed_loras(pipe, "CiroN2022/toy-face", eig_dict
 os.mkdir("toy_face_recons")
 save_file(recons_lora, "toy_face_recons/weights_sdxl.safetensors")
 
+tf_eigenlora = calculate_eigenloras(pipe, "CiroN2022/toy-face", eig_dict, 32)
+os.mkdir("toy_face_elora")
+save_file(tf_eigenlora, "toy_face_elora/weights_sdxl.safetensors")
 
 recons_lora = calculate_reconstructed_loras(pipe, "CiroN2022/mind-warp", eig_dict, 32)
 os.mkdir("mind_warp_recons")
 save_file(recons_lora, "mind_warp/weights_sdxl.safetensors")
+
+mw_eigenlora = calculate_eigenloras(pipe, "CiroN2022/mind_warp", eig_dict, 32)
+os.mkdir("mind_warp_elora")
+save_file(mw_eigenlora, "mind_warp_elora/weights_sdxl.safetensors")

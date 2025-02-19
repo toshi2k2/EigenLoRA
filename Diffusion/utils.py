@@ -1,6 +1,12 @@
 import torch
 import torch.nn as nn
 from tqdm import tqdm
+import re
+
+
+def replace_key(text, substring, replacement):
+    pattern = re.compile(re.escape(substring) + r".*", re.DOTALL)
+    return re.sub(pattern, replacement, text)
 
 
 def consolidate_loras_sdxl(pipe, lora_dict, lora_name, key_name):
@@ -82,3 +88,30 @@ def calculate_reconstructed_loras(pipe, lora_name, eigenvectors, num_components)
             ).contiguous()
             recons_lora_sd.update({k: recons})
     return recons_lora_sd
+
+
+def calculate_eigenloras(pipe, lora_name, eigenvectors, num_components):
+    eigenlora_sd = {}
+    lora_sd, alphas = pipe.lora_state_dict(lora_name, unet_config=pipe.unet.config)
+    for k in lora_sd.keys():
+        if ".up." in k:
+            components = nn.Parameter(
+                eigenvectors[k]["eigenvectors"][:, :num_components]
+            ).contiguous()
+            loadings = nn.Parameter(torch.mm(components.t(), lora_sd[k]).squeeze(dim=1))
+            new_key_c = replace_key(k, "lora.up", "eigenlora.up.components")
+            new_key_l = replace_key(k, "lora.up", "eigenlora.up.loadings")
+            eigenlora_sd.update({new_key_c: components})
+            eigenlora_sd.update({new_key_l: loadings})
+        elif ".down." in k:
+            components = nn.Parameter(
+                eigenvectors[k]["eigenvectors"][:, :num_components]
+            ).contiguous()
+            loadings = nn.Parameter(
+                torch.mm(components.t(), lora_sd[k].t()).squeeze(dim=1)
+            )
+            new_key_c = replace_key(k, "lora.down", "eigenlora.down.components")
+            new_key_l = replace_key(k, "lora.down", "eigenlora.down.loadings")
+            eigenlora_sd.update({new_key_c: components})
+            eigenlora_sd.update({new_key_l: loadings})
+    return eigenlora_sd
