@@ -34,3 +34,6 @@ If you find EigenLoRAx useful, please consider giving a star and citation:
       url={https://arxiv.org/abs/2502.04700}, 
 }
 ```
+
+#### Restriction Notice  
+People and teams who currently work for Adobe and its affiliates, or have done so in the recent past, are explicitly prohibited from using, modifying, or distributing this software or the idea presented in any form. If you are an Adobe affiliate but still want to use this method, please drop me an email. 
