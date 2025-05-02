@@ -120,12 +120,13 @@ else:
     logger.info("Disabling Safetensors because USE_TF is set")
     _safetensors_available = False
 
-_transformers_available = importlib.util.find_spec("transformers") is not None
-try:
-    _transformers_version = importlib_metadata.version("transformers")
-    logger.debug(f"Successfully imported transformers version {_transformers_version}")
-except importlib_metadata.PackageNotFoundError:
-    _transformers_available = False
+_transformers_available = True
+# _transformers_available = importlib.util.find_spec("transformers") is not None
+# try:
+#     _transformers_version = importlib_metadata.version("transformers")
+#     logger.debug(f"Successfully imported transformers version {_transformers_version}")
+# except importlib_metadata.PackageNotFoundError:
+#     _transformers_available = False
 
 
 _inflect_available = importlib.util.find_spec("inflect") is not None
@@ -735,9 +736,10 @@ def is_transformers_version(operation: str, version: str):
         version (`str`):
             A version string
     """
-    if not _transformers_available:
-        return False
-    return compare_versions(parse(_transformers_version), operation, version)
+    # if not _transformers_available:
+    #     return False
+    # return compare_versions(parse(_transformers_version), operation, version)
+    return True
 
 
 def is_accelerate_version(operation: str, version: str):

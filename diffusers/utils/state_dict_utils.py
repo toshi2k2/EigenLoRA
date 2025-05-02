@@ -81,32 +81,33 @@ DIFFUSERS_TO_PEFT = {
     "text_projection.lora.up.weight": "text_projection.lora_B.weight",
 }
 
-DIFFUSERS_TO_PEFT_eigenlora = {
-    ".q_proj.eigenlora_linear_layer.up.loadings": ".q_proj.eigenlora_B.loadings",
-    ".q_proj.eigenlora_linear_layer.up.components": ".q_proj.eigenlora_B.components",
-    ".q_proj.eigenlora_linear_layer.down.loadings": ".q_proj.eigenlora_A.loadings",
-    ".q_proj.eigenlora_linear_layer.down.components": ".q_proj.eigenlora_A.components",
-    ".k_proj.eigenlora_linear_layer.up.loadings": ".k_proj.eigenlora_B.loadings",
-    ".k_proj.eigenlora_linear_layer.up.components": ".k_proj.eigenlora_B.components",
-    ".k_proj.eigenlora_linear_layer.down.loadings": ".k_proj.eigenlora_A.loadings",
-    ".k_proj.eigenlora_linear_layer.down.components": ".k_proj.eigenlora_A.components",
-    ".v_proj.eigenlora_linear_layer.up.loadings": ".v_proj.eigenlora_B.loadings",
-    ".v_proj.eigenlora_linear_layer.up.components": ".v_proj.eigenlora_B.components",
-    ".v_proj.eigenlora_linear_layer.down.loadings": ".v_proj.eigenlora_A.loadings",
-    ".v_proj.eigenlora_linear_layer.down.components": ".v_proj.eigenlora_A.components",
-    ".out_proj.eigenlora_linear_layer.up.loadings": ".out_proj.eigenlora_B.loadings",
-    ".out_proj.eigenlora_linear_layer.up.components": ".out_proj.eigenlora_B.components",
-    ".out_proj.eigenlora_linear_layer.down.loadings": ".out_proj.eigenlora_A.loadings",
-    ".out_proj.eigenlora_linear_layer.down.components": ".out_proj.eigenlora_A.components",
-    ".eigenlora_linear_layer.up.loadings": ".eigenlora_B.loadings",
-    ".eigenlora_linear_layer.up.components": ".eigenlora_B.components",
-    ".eigenlora_linear_layer.down.loadings": ".eigenlora_A.loadings",
-    ".eigenlora_linear_layer.down.components": ".eigenlora_A.components",
-    "text_projection.eigenlora.down.loadings": "text_projection.eigenlora_A.loadings",
-    "text_projection.eigenlora.down.components": "text_projection.eigenlora_A.components",
-    "text_projection.eigenlora.up.loadings": "text_projection.eigenlora_B.loadings",
-    "text_projection.eigenlora.up.components": "text_projection.eigenlora_B.components",
-}
+# DIFFUSERS_TO_PEFT_eigenlora = {
+#     ".q_proj.eigenlora_linear_layer.up.loadings": ".q_proj.eigenlora_B.loadings",
+#     ".q_proj.eigenlora_linear_layer.up.components": ".q_proj.eigenlora_B.components",
+#     ".q_proj.eigenlora_linear_layer.down.loadings": ".q_proj.eigenlora_A.loadings",
+#     ".q_proj.eigenlora_linear_layer.down.components": ".q_proj.eigenlora_A.components",
+#     ".k_proj.eigenlora_linear_layer.up.loadings": ".k_proj.eigenlora_B.loadings",
+#     ".k_proj.eigenlora_linear_layer.up.components": ".k_proj.eigenlora_B.components",
+#     ".k_proj.eigenlora_linear_layer.down.loadings": ".k_proj.eigenlora_A.loadings",
+#     ".k_proj.eigenlora_linear_layer.down.components": ".k_proj.eigenlora_A.components",
+#     ".v_proj.eigenlora_linear_layer.up.loadings": ".v_proj.eigenlora_B.loadings",
+#     ".v_proj.eigenlora_linear_layer.up.components": ".v_proj.eigenlora_B.components",
+#     ".v_proj.eigenlora_linear_layer.down.loadings": ".v_proj.eigenlora_A.loadings",
+#     ".v_proj.eigenlora_linear_layer.down.components": ".v_proj.eigenlora_A.components",
+#     ".out_proj.eigenlora_linear_layer.up.loadings": ".out_proj.eigenlora_B.loadings",
+#     ".out_proj.eigenlora_linear_layer.up.components": ".out_proj.eigenlora_B.components",
+#     ".out_proj.eigenlora_linear_layer.down.loadings": ".out_proj.eigenlora_A.loadings",
+#     ".out_proj.eigenlora_linear_layer.down.components": ".out_proj.eigenlora_A.components",
+#     ".eigenlora_linear_layer.up.loadings": ".eigenlora_B.loadings",
+#     ".eigenlora_linear_layer.up.components": ".eigenlora_B.components",
+#     ".eigenlora_linear_layer.down.loadings": ".eigenlora_A.loadings",
+#     ".eigenlora_linear_layer.down.components": ".eigenlora_A.components",
+#     "text_projection.eigenlora.down.loadings": "text_projection.eigenlora_A.loadings",
+#     "text_projection.eigenlora.down.components": "text_projection.eigenlora_A.components",
+#     "text_projection.eigenlora.up.loadings": "text_projection.eigenlora_B.loadings",
+#     "text_projection.eigenlora.up.components": "text_projection.eigenlora_B.components",
+# }
+
 
 DIFFUSERS_OLD_TO_PEFT = {
     ".to_q_lora.up": ".q_proj.lora_B",
@@ -119,6 +120,29 @@ DIFFUSERS_OLD_TO_PEFT = {
     ".to_out_lora.down": ".out_proj.lora_A",
     ".lora_linear_layer.up": ".lora_B",
     ".lora_linear_layer.down": ".lora_A",
+}
+
+DIFFUSERS_OLD_TO_PEFT_eigenlora = {
+    ".to_q_eigenlora.up.components": ".q_proj.eigenlora_B.components",
+    ".to_q_eigenlora.up.loadings": ".q_proj.eigenlora_B.loadings",
+    ".to_q_eigenlora.down.components": ".q_proj.eigenlora_A.components",
+    ".to_q_eigenlora.down.loadings": ".q_proj.eigenlora_A.loadings",
+    ".to_k_eigenlora.up.components": ".k_proj.eigenlora_B.components",
+    ".to_k_eigenlora.up.loadings": ".k_proj.eigenlora_B.loadings",
+    ".to_k_eigenlora.down.components": ".k_proj.eigenlora_A.components",
+    ".to_k_eigenlora.down.loadings": ".k_proj.eigenlora_A.loadings",
+    ".to_v_eigenlora.up.components": ".v_proj.eigenlora_B.components",
+    ".to_v_eigenlora.up.loadings": ".v_proj.eigenlora_B.loadings",
+    ".to_v_eigenlora.down.components": ".v_proj.eigenlora_A.components",
+    ".to_v_eigenlora.down.loadings": ".v_proj.eigenlora_A.loadings",
+    ".to_out_eigenlora.up.components": ".out_proj.eigenlora_B.components",
+    ".to_out_eigenlora.up.loadings": ".out_proj.eigenlora_B.loadings",
+    ".to_out_eigenlora.down.components": ".out_proj.eigenlora_A.components",
+    ".to_out_eigenlora.down.loadings": ".out_proj.eigenlora_A.loadings",
+    ".eigenlora_linear_layer.up.components": ".eigenlora_B.components",
+    ".eigenlora_linear_layer.up.loadings": ".eigenlora_B.loadings",
+    ".eigenlora_linear_layer.down.components": ".eigenlora_A.components",
+    ".eigenlora_linear_layer.down.loadings": ".eigenlora_A.loadings",
 }
 
 PEFT_TO_DIFFUSERS = {
@@ -190,6 +214,26 @@ DIFFUSERS_OLD_TO_DIFFUSERS = {
     ".to_out.lora_magnitude_vector": ".out_proj.lora_magnitude_vector",
 }
 
+
+DIFFUSERS_OLD_TO_DIFFUSERS_eigenlora = {
+    ".to_q_eigenlora.up.components": ".q_proj.eigenlora_linear_layer.up.components",
+    ".to_q_eigenlora.down.components": ".q_proj.eigenlora_linear_layer.down.components",
+    ".to_k_eigenlora.up.components": ".k_proj.eigenlora_linear_layer.up.components",
+    ".to_k_eigenlora.down.components": ".k_proj.eigenlora_linear_layer.down.components",
+    ".to_v_eigenlora.up.components": ".v_proj.eigenlora_linear_layer.up.components",
+    ".to_v_eigenlora.down.components": ".v_proj.eigenlora_linear_layer.down.components",
+    ".to_out_eigenlora.up.components": ".out_proj.eigenlora_linear_layer.up.components",
+    ".to_out_eigenlora.down.components": ".out_proj.eigenlora_linear_layer.down.components",
+    ".to_q_eigenlora.up.loadings": ".q_proj.eigenlora_linear_layer.up.loadings",
+    ".to_q_eigenlora.down.loadings": ".q_proj.eigenlora_linear_layer.down.loadings",
+    ".to_k_eigenlora.up.loadings": ".k_proj.eigenlora_linear_layer.up.loadings",
+    ".to_k_eigenlora.down.loadings": ".k_proj.eigenlora_linear_layer.down.loadings",
+    ".to_v_eigenlora.up.loadings": ".v_proj.eigenlora_linear_layer.up.loadings",
+    ".to_v_eigenlora.down.loadings": ".v_proj.eigenlora_linear_layer.down.loadings",
+    ".to_out_eigenlora.up.loadings": ".out_proj.eigenlora_linear_layer.up.loadings",
+    ".to_out_eigenlora.down.loadings": ".out_proj.eigenlora_linear_layer.down.loadings",
+}
+
 PEFT_TO_KOHYA_SS = {
     "lora_A": "lora_down",
     "lora_B": "lora_up",
@@ -201,13 +245,13 @@ PEFT_TO_KOHYA_SS = {
 PEFT_STATE_DICT_MAPPINGS = {
     StateDictType.DIFFUSERS_OLD: DIFFUSERS_OLD_TO_PEFT,
     StateDictType.DIFFUSERS: DIFFUSERS_TO_PEFT,
-    StateDictType.DIFFUSERS_EIGENLORA: DIFFUSERS_TO_PEFT_eigenlora,
+    StateDictType.DIFFUSERS_EIGENLORA: DIFFUSERS_OLD_TO_PEFT_eigenlora,
 }
 
 DIFFUSERS_STATE_DICT_MAPPINGS = {
     StateDictType.DIFFUSERS_OLD: DIFFUSERS_OLD_TO_DIFFUSERS,
     StateDictType.PEFT: PEFT_TO_DIFFUSERS,
-    StateDictType.PEFT_EIGENLORA: PEFT_TO_DIFFUSERS_eigenlora,
+    StateDictType.DIFFUSERS_EIGENLORA: DIFFUSERS_OLD_TO_DIFFUSERS_eigenlora,
 }
 
 KOHYA_STATE_DICT_MAPPINGS = {StateDictType.PEFT: PEFT_TO_KOHYA_SS}
@@ -264,11 +308,14 @@ def convert_state_dict_to_peft(state_dict, original_type=None, **kwargs):
     if original_type is None:
         # Old diffusers to PEFT
         if any("to_out_lora" in k for k in state_dict.keys()):
+            print("A")
             original_type = StateDictType.DIFFUSERS_OLD
-        elif any("lora_linear_layer" in k for k in state_dict.keys()):
-            original_type = StateDictType.DIFFUSERS
         elif any("eigenlora_linear_layer" in k for k in state_dict.keys()):
+            print("B")
             original_type = StateDictType.DIFFUSERS_EIGENLORA
+        elif any("lora_linear_layer" in k for k in state_dict.keys()):
+            print("C")
+            original_type = StateDictType.DIFFUSERS
         else:
             raise ValueError("Could not automatically infer state dict type")
 
@@ -306,17 +353,21 @@ def convert_state_dict_to_diffusers(state_dict, original_type=None, **kwargs):
         peft_adapter_name = "." + peft_adapter_name
     else:
         peft_adapter_name = ""
-
+    print(peft_adapter_name)
     if original_type is None:
         # Old diffusers to PEFT
         if any("to_out_lora" in k for k in state_dict.keys()):
+            print("1")
             original_type = StateDictType.DIFFUSERS_OLD
         elif any(f".lora_A{peft_adapter_name}.weight" in k for k in state_dict.keys()):
+            print("2")
             original_type = StateDictType.PEFT
-        elif any(f".eigenlora_A{peft_adapter_name}" in k for k in state_dict.keys()):
-            original_type = StateDictType.PEFT_EIGENLORA
+        elif any(f".eigenlora{peft_adapter_name}" in k for k in state_dict.keys()):
+            print("3")
+            original_type = StateDictType.DIFFUSERS_EIGENLORA
         elif any("lora_linear_layer" in k for k in state_dict.keys()):
             # nothing to do
+            print("4")
             return state_dict
         else:
             raise ValueError("Could not automatically infer state dict type")

@@ -117,7 +117,6 @@ dependencies:
       - torchmetrics==1.4.2
       - torchvision==0.16.2
       - tqdm==4.66.4
-      - transformers==4.44.2
       - triton==2.1.0
       - tzdata==2024.1
       - urllib3==2.2.2

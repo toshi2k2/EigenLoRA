@@ -70,6 +70,7 @@ lora_dict_train = consolidate_loras_sdxl(
     pipe, lora_dict_train, "CiroN2022/skull-graphics", "skull_graphics"
 )
 
+
 eig_dict = get_eigenvectors(lora_dict_train, False)
 recons_lora = calculate_reconstructed_loras(pipe, "CiroN2022/toy-face", eig_dict, 32)
 os.mkdir("toy_face_recons")

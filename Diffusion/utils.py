@@ -99,8 +99,16 @@ def calculate_eigenloras(pipe, lora_name, eigenvectors, num_components):
                 eigenvectors[k]["eigenvectors"][:, :num_components]
             ).contiguous()
             loadings = nn.Parameter(torch.mm(components.t(), lora_sd[k]).squeeze(dim=1))
-            new_key_c = replace_key(k, "lora.up", "eigenlora.up.components")
-            new_key_l = replace_key(k, "lora.up", "eigenlora.up.loadings")
+            if ".lora_linear_layer." in k:
+                new_key_c = replace_key(
+                    k, "lora_linear_layer.up", "eigenlora_linear_layer.up.components"
+                )
+                new_key_l = replace_key(
+                    k, "lora_linear_layer.up", "eigenlora_linear_layer.up.loadings"
+                )
+            else:
+                new_key_c = replace_key(k, "lora.up", "eigenlora.up.components")
+                new_key_l = replace_key(k, "lora.up", "eigenlora.up.loadings")
             eigenlora_sd.update({new_key_c: components})
             eigenlora_sd.update({new_key_l: loadings})
         elif ".down." in k:
@@ -110,8 +118,18 @@ def calculate_eigenloras(pipe, lora_name, eigenvectors, num_components):
             loadings = nn.Parameter(
                 torch.mm(components.t(), lora_sd[k].t()).squeeze(dim=1)
             )
-            new_key_c = replace_key(k, "lora.down", "eigenlora.down.components")
-            new_key_l = replace_key(k, "lora.down", "eigenlora.down.loadings")
+            if ".lora_linear_layer." in k:
+                new_key_c = replace_key(
+                    k,
+                    "lora_linear_layer.down",
+                    "eigenlora_linear_layer.down.components",
+                )
+                new_key_l = replace_key(
+                    k, "lora_linear_layer.down", "eigenlora_linear_layer.down.loadings"
+                )
+            else:
+                new_key_c = replace_key(k, "lora.down", "eigenlora.down.components")
+                new_key_l = replace_key(k, "lora.down", "eigenlora.down.loadings")
             eigenlora_sd.update({new_key_c: components})
             eigenlora_sd.update({new_key_l: loadings})
     return eigenlora_sd
