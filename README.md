@@ -21,6 +21,8 @@ conda activate eigenlora
 
 In order to find the EigenLoRAs Principal Components, start with a few pretrained LoRA adapters for the same base model. 
 
+Refer to ```NLU/``` and ```Diffusion/``` for usage examples.
+
 ## Citation
 If you find EigenLoRAx useful, please consider giving a star and citation:
 ```bibtex
