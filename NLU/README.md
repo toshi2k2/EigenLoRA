@@ -15,14 +15,32 @@ cd NLU/
 ```
 
 ### Obtain the initial eigenloras
+You can use the provided shell scripts for each task:
 ```console
-python get_eigenlora.py
+# For MRPC task
+sh ./scripts/generation/get_eigenlora_mrpc.sh
+sh ./scripts/generation/get_eigenlora_stsb.sh
+```
+
+Or run the python script directly (example for MRPC):
+```console
+python get_eigenlora.py \
+  --source_lora_paths "ankit-vaidya19/cola_lora_r_8" "ankit-vaidya19/qnli_lora_r_8" \
+  --source_lora_names cola qnli \
+  --target_task_name mrpc \
+  --num_labels 2 \
+  --model_name_or_path roberta-base \
+  --eigenlora_r 8 \
+  --num_eigenvector_components 32 \
+  --num_gram_schmidt_components 32 \
+  --loading_source_index 0 \
+  --output_dir ./mrpc_eigenlora
 ```
 
 ### Start the experiments for the obtained eigenloras
 ```console
-sh ./scripts/glue_mrpc.sh
-sh ./scripts/glue_stsb.sh
+sh ./scripts/training/glue_mrpc.sh
+sh ./scripts/training/glue_stsb.sh
 ```
 
 

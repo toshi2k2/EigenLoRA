@@ -719,12 +719,14 @@ def main():
         tokenizer=tokenizer,
         data_collator=data_collator,
     )
+
     # Training
-    for name, param in model.named_parameters():
-        print(name, param.shape, param.requires_grad)
     if training_args.do_train:
+        # Log trainable parameters
+        logger.info("Trainable parameters:")
         for name, param in model.named_parameters():
-            print(name, param.shape, param.requires_grad)
+            if param.requires_grad:
+                logger.info(f"  {name}: {param.shape}")
         checkpoint = None
         if training_args.resume_from_checkpoint is not None:
             checkpoint = training_args.resume_from_checkpoint
@@ -747,8 +749,6 @@ def main():
 
     # Evaluation
     if training_args.do_eval:
-        # if model_args.apply_eigenlora and model_args.eigenlora_use_rank_updates:
-        #     model.recalculate_eigenlora(model_args.eigenlora_adapter_name)
         logger.info("*** Evaluate ***")
 
         # Loop to handle MNLI double evaluation (matched, mis-matched)
